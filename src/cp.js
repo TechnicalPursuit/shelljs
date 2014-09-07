@@ -137,6 +137,13 @@ function _cp(options, sources, dest) {
     common.error('dest file already exists: ' + dest);
 
   if (options.recursive) {
+    // Recursive allows the shortcut syntax "sourcedir/" for "sourcedir/*"
+    // (see Github issue #15)
+    sources.forEach(function(src, i) {
+      if (src[src.length - 1] === '/')
+        sources[i] += '*';
+    });
+
     // Create dest
     try {
       fs.mkdirSync(dest, parseInt('0777', 8));
