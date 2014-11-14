@@ -75,7 +75,7 @@ assert.equal(values.length, 2);
 assert.equal(values.sort().join('\n'), 'resources/file1.txt\nresources/file2.txt');
 
 // glob (and -s to silence missing files found via glob)
-shell.cd('./resources');
+shell.cd('resources');
 var result = shell.grep('-s', /test/, '*');
 var values = result.trim().split('\n');
 assert.equal(shell.error(), null);
@@ -84,7 +84,7 @@ assert.equal(values.sort().join('\n'), 'test\ntest\ntest1\ntest1\ntest2\ntest2')
 shell.cd('..');
 
 // glob (and -s to silence missing files found via glob)
-shell.cd('./resources');
+shell.cd('resources');
 var result = shell.grep('-s', /test/, '*');
 var values = result.trim().split('\n');
 assert.equal(shell.error(), null);
@@ -92,7 +92,7 @@ assert.equal(values.length, 6);
 assert.equal(values.sort().join('\n'), 'test\ntest\ntest1\ntest1\ntest2\ntest2');
 
 // glob listing file names of matches
-shell.cd('./resources');
+shell.cd('resources');
 var result = shell.grep('-ls', /test/, '*');
 var values = result.trim().split('\n');
 assert.equal(shell.error(), null);

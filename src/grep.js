@@ -62,8 +62,6 @@ function _grep(options, regex, files) {
         }
       }
     });
-    // Remove trailing newline so split() won't have artifacts.
-    grep = grep.slice(0, -1);
   });
 
   return common.ShellString(grep);
